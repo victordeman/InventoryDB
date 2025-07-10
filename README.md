@@ -43,3 +43,8 @@
    - Update app/config.py with your PostgreSQL credentials (e.g., password).
    - Run the database setup script:bash 
 
+4. **Launch the Streamlit App**:
+   ```bash
+   streamlit run app/main.py
+   - Open your browser to http://localhost:8501 to access the app.
+   
