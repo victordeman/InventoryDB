@@ -40,7 +40,6 @@
    pip install -r scripts/requirements.txt
 
 3. **Set Up PostgreSQL:Ensure PostgreSQL is running and accessible**:
-   ```bash
-   Update app/config.py with your PostgreSQL credentials (e.g., password).
-   Run the database setup script:bash 
+   - Update app/config.py with your PostgreSQL credentials (e.g., password).
+   - Run the database setup script:bash 
 
