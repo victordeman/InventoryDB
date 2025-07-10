@@ -46,5 +46,5 @@
 4. **Launch the Streamlit App**:
    ```bash
    streamlit run app/main.py
+
    - Open your browser to http://localhost:8501 to access the app.
-   
