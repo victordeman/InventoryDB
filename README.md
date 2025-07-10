@@ -34,3 +34,13 @@
    ```bash
    git clone https://github.com/victordeman/InventoryDB
    cd InventoryDB
+
+### Install Python Dependencies:
+
+pip install -r scripts/requirements.txt
+
+### Set Up PostgreSQL:Ensure PostgreSQL is running and accessible.
+
+- Update app/config.py with your PostgreSQL credentials (e.g., password).
+- Run the database setup script:bash
+
