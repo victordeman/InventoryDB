@@ -1,0 +1,1 @@
+database:\n  host: localhost\n  port: 5432\n  name: inventorydb\n  user: your_user\n  password: your_password
