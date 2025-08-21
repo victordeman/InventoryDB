@@ -1,0 +1,1 @@
+-- Triggers and stored procedures for InventoryDB

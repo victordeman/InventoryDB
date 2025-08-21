@@ -1,0 +1,1 @@
+-- Common SQL queries for inventory management
