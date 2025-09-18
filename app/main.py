@@ -1,29 +1,56 @@
-import streamlit as st
-from db import get_db_connection, fetch_products, add_product, update_stock
+from flask import Flask, render_template, request, redirect, url_for, flash
+from db import get_db_connection, fetch_products, fetch_dashboard_stats, add_product, update_stock, fetch_categories, add_category
 
-st.title("InventoryDB Management System")
+app = Flask(__name__)
+app.secret_key = 'your-secret-key'  # For flash messages
 
-# Display products
-st.header("Product Inventory")
-products = fetch_products()
-st.dataframe(products)
+@app.route('/')
+def index():
+    stats = fetch_dashboard_stats()
+    products = fetch_products()
+    return render_template('index.html', stats=stats, products=products)
 
-# Add new product
-st.header("Add New Product")
-with st.form("add_product_form"):
-    name = st.text_input("Product Name")
-    category_id = st.number_input("Category ID", min_value=1, step=1)
-    price = st.number_input("Price", min_value=0.01, format="%.2f")
-    stock = st.number_input("Stock Quantity", min_value=0, step=1)
-    submit = st.form_submit_button("Add Product")
-    if submit:
-        add_product(name, category_id, price, stock)
-        st.success("Product added!")
+@app.route('/add_product', methods=['GET', 'POST'])
+def add_product_route():
+    if request.method == 'POST':
+        name = request.form['name']
+        category_id = request.form['category_id']
+        price = request.form['price']
+        stock_quantity = request.form['stock_quantity']
+        try:
+            add_product(name, int(category_id), float(price), int(stock_quantity))
+            flash('Product added successfully!', 'success')
+            return redirect(url_for('index'))
+        except Exception as e:
+            flash(f'Error adding product: {str(e)}', 'error')
+    categories = fetch_categories()
+    return render_template('add_product.html', categories=categories)
 
-# Update stock
-st.header("Update Stock")
-product_id = st.number_input("Product ID", min_value=1, step=1)
-quantity = st.number_input("Quantity Change", step=1)
-if st.button("Update Stock"):
-    update_stock(product_id, quantity)
-    st.success("Stock updated!")
+@app.route('/update_stock', methods=['GET', 'POST'])
+def update_stock_route():
+    if request.method == 'POST':
+        product_id = request.form['product_id']
+        quantity = request.form['quantity']
+        try:
+            update_stock(int(product_id), int(quantity))
+            flash('Stock updated successfully!', 'success')
+            return redirect(url_for('index'))
+        except Exception as e:
+            flash(f'Error updating stock: {str(e)}', 'error')
+    return render_template('update_stock.html')
+
+@app.route('/categories', methods=['GET', 'POST'])
+def categories():
+    if request.method == 'POST':
+        category_name = request.form['category_name']
+        try:
+            add_category(category_name)
+            flash('Category added successfully!', 'success')
+            return redirect(url_for('categories'))
+        except Exception as e:
+            flash(f'Error adding category: {str(e)}', 'error')
+    categories = fetch_categories()
+    return render_template('categories.html', categories=categories)
+
+if __name__ == '__main__':
+    app.run(debug=True)

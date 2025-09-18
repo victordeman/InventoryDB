@@ -1,1 +1,2 @@
-# Design Document\nDetails on database schema and system architecture.
+# Design Document
+Details on database schema and system architecture.

@@ -1,6 +1,6 @@
 # Entity-Relationship Diagram
 
-```mermaid
+\`\`\`mermaid
 erDiagram
     CATEGORIES ||--o{ PRODUCTS : contains
     CATEGORIES {
@@ -15,4 +15,4 @@ erDiagram
         int stock_quantity
         timestamp last_updated
     }
-```
+\`\`\`

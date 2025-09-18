@@ -14,11 +14,11 @@ psql -U $DB_USER -h $DB_HOST -p $DB_PORT -c "CREATE DATABASE $DB_NAME;" 2>/dev/n
 if [ $? -eq 0 ]; then
     echo "Database created successfully."
 else
-    echo "Failed to create database. It may already exist. Attempting to proceed..."
+    echo "Database may already exist. Proceeding..."
 fi
 
 echo "Loading schema..."
-psql -U $DB_USER -h $DB_HOST -p $DB_PORT -d $DB_NAME -f sql/schema.sql 2>/dev/null
+psql -U $DB_USER -h $DB_HOST -p $DB_PORT -d $DB_NAME -f sql/schema.sql
 if [ $? -eq 0 ]; then
     echo "Schema loaded successfully."
 else
@@ -27,7 +27,7 @@ else
 fi
 
 echo "Loading seed data..."
-psql -U $DB_USER -h $DB_HOST -p $DB_PORT -d $DB_NAME -f sql/seed.sql 2>/dev/null
+psql -U $DB_USER -h $DB_HOST -p $DB_PORT -d $DB_NAME -f sql/seed.sql
 if [ $? -eq 0 ]; then
     echo "Seed data loaded successfully."
 else
@@ -36,7 +36,7 @@ else
 fi
 
 echo "Setting up triggers..."
-psql -U $DB_USER -h $DB_HOST -p $DB_PORT -d $DB_NAME -f sql/triggers.sql 2>/dev/null
+psql -U $DB_USER -h $DB_HOST -p $DB_PORT -d $DB_NAME -f sql/triggers.sql
 if [ $? -eq 0 ]; then
     echo "Triggers set up successfully."
 else
@@ -45,4 +45,4 @@ else
 fi
 
 echo "Database setup complete!"
-unset PGPASSWORD  # Clear password from environment
+unset PGPASSWORD

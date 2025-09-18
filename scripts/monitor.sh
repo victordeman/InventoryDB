@@ -1,1 +1,2 @@
-#!/bin/bash\n# Script for monitoring database performance
+#!/bin/bash
+# Script for monitoring database performance
