@@ -15,6 +15,50 @@
 - **Frontend**: HTML, Tailwind CSS, AOS, Feather icons
 - **Scripting**: Linux Bash
 - **Version Control**: Git
+  
+## Repository Structure
+
+```
+InventoryDB/
+├── app/
+│   ├── static/            # For CSS, JS, and other static assets
+│   │   ├── aos.css
+│   │   ├── aos.js
+│   │   └── feather.min.js
+│   ├── templates/         # Jinja2 templates
+│   │   ├── base.html      # Base template with navigation and styling
+│   │   ├── index.html     # Dashboard (adapted from provided HTML)
+│   │   ├── add_product.html
+│   │   ├── update_stock.html
+│   │   └── categories.html
+│   ├── config.py          # Database configuration
+│   ├── db.py              # Database operations
+│   ├── main.py            # Flask app
+│   └── requirements.txt   # Dependencies
+├── db/                    # (Optional, can consolidate with sql/)
+├── sql/                   # Database schema, seed data, queries
+│   ├── schema.sql
+│   ├── seed.sql
+│   ├── queries.sql
+│   └── triggers.sql
+├── docs/                  # Documentation
+│   ├── CHANGELOG.md
+│   ├── DESIGN.md
+│   ├── ERD.md
+│   └── README.md
+├── scripts/               # Automation scripts
+│   ├── backup.sh
+│   ├── monitor.sh
+│   ├── requirements.txt
+│   └── setup.sh
+├── tests/                 # Unit tests
+│   ├── test_app.py
+│   ├── test_db.py
+│   └── test_queries.py
+├── .python-version
+├── LICENSE
+└── README.md
+```
 
 ## Getting Started
 
