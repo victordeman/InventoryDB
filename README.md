@@ -64,7 +64,7 @@ InventoryDB/
 
 ### Prerequisites
 - PostgreSQL (\`sudo apt-get install postgresql\`)
-- Python 3.8+ and pip
+- Python 3.10+ and pip
 - Git
 
 ### Setup Instructions
